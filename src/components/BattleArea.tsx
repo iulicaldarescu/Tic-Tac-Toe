@@ -84,10 +84,6 @@ function BattleArea({
     setMainArray(newArr);
   };
 
-  useEffect(() => {
-    console.log(turn);
-  }, [turn]);
-
   // player vs cpu
 
   const pvc = (param: number) => {
@@ -102,25 +98,35 @@ function BattleArea({
     });
     setMainArray(newArr);
 
-    const number = Math.floor(Math.random() * mainArray.length);
+    const emptyLocations: number[] = [];
+    newArr.forEach((item, index) => {
+      if (item === "") {
+        emptyLocations.push(index);
+      }
+    });
+    console.log(emptyLocations);
 
-    // if (mainArray[number] === "") {
-    //   setMainArray([...mainArray, iconO]);
-    // }
+    setTimeout(() => {
+      setMainArray((prev) => {
+        const random = Math.floor(Math.random() * emptyLocations.length);
 
-    console.log(mainArray);
+        console.log(emptyLocations[random]);
 
-    // const number = Math.floor(Math.random() * mainArray.length);
+        const newArr = prev.map((item, index) => {
+          if (
+            index === emptyLocations[random] &&
+            emptyLocations.includes(index)
+          ) {
+            item = iconO;
+          } else {
+          }
+          return item;
+        });
+        return newArr;
+      });
 
-    // setTimeout(() => {
-    //   const newArr = mainArray.map((item, index) => {
-    //     if (index === number && item === "") {
-    //       item = iconO;
-    //     }
-    //     return item;
-    //   });
-    //   setMainArray(newArr);
-    // }, 1000);
+      // setMainArray(newArr);
+    }, 1000);
 
     // cpu choice
   };

@@ -10,15 +10,19 @@ function App() {
 
   return (
     <div>
-      <Menu></Menu>
       {/* <Header turn={turn} />
        */}
       <Routes>
+        <Route path="/" element={<Menu />}></Route>
         <Route
-          path="/play-cpu"
-          element={<BattleArea turn={turn} setTurn={setTurn} />}
+          path="/play"
+          element={
+            <>
+              <Header turn={turn} />
+              <BattleArea turn={turn} setTurn={setTurn} />{" "}
+            </>
+          }
         ></Route>
-        <Route path="/play-player"></Route>
       </Routes>
     </div>
   );

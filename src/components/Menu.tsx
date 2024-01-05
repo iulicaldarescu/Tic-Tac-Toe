@@ -1,6 +1,7 @@
 import logo from "../assets/logo.svg";
 import { useState } from "react";
 import styles from "../styles/Menu.module.css";
+import { Link } from "react-router-dom";
 
 function Menu() {
   const [playerChoice, setPlayerChoice] = useState<string>("X");
@@ -70,18 +71,20 @@ function Menu() {
       </div>
 
       {/* New game modes */}
-      <div className="flex flex-col gap-5 text-center">
-        <div
-          className={`bg-[#f2b236] font-bold rounded-lg py-2 ${styles["custom-shadow-yellow"]}`}
-        >
-          NEW GAME (VS CPU)
+      <Link to="/play">
+        <div className="flex flex-col gap-5 text-center">
+          <div
+            className={`bg-[#f2b236] font-bold rounded-lg py-2 ${styles["custom-shadow-yellow"]}`}
+          >
+            NEW GAME (VS CPU)
+          </div>
+          <div
+            className={`bg-[#31c4be] font-bold rounded-lg py-2 ${styles["custom-shadow-blue"]}`}
+          >
+            NEW GAME (VS PLAYER)
+          </div>
         </div>
-        <div
-          className={`bg-[#31c4be] font-bold rounded-lg py-2 ${styles["custom-shadow-blue"]}`}
-        >
-          NEW GAME (VS PLAYER)
-        </div>
-      </div>
+      </Link>
     </div>
   );
 }
