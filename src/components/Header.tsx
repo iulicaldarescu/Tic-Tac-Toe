@@ -3,7 +3,14 @@ import iconX from "../assets/icon-x.svg";
 import iconO from "../assets/icon-o.svg";
 import restart from "../assets/icon-restart.svg";
 
-function Header({ turn }: { turn: string }) {
+function Header({
+  turn,
+  res,
+}: {
+  turn: string;
+  res: () => void;
+  mainArray: string[];
+}) {
   return (
     <header className="flex justify-between items-center">
       {/* LEFT SIDE HEADER */}
@@ -25,9 +32,12 @@ function Header({ turn }: { turn: string }) {
       </div>
 
       {/* RIGHT SIDE HEADER */}
-      <div className="bg-[#a1b7c2] py-[9px] border-b-[6px] border-[#6c8997] rounded-lg px-[10px]">
+      <button
+        className="bg-[#a1b7c2] py-[9px] border-b-[6px] border-[#6c8997] rounded-lg px-[10px]"
+        onClick={res}
+      >
         <img src={restart} alt="restart"></img>
-      </div>
+      </button>
     </header>
   );
 }
